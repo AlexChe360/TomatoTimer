@@ -13,6 +13,8 @@
 		FAE532B32B58C0CE00C84CFF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAE532B12B58C0CE00C84CFF /* Main.storyboard */; };
 		FAE532B52B58C0D000C84CFF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAE532B42B58C0D000C84CFF /* Assets.xcassets */; };
 		FAE532B82B58C0D000C84CFF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAE532B62B58C0D000C84CFF /* LaunchScreen.storyboard */; };
+		FAE532C52B58C71500C84CFF /* CircularProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE532C42B58C71500C84CFF /* CircularProgressBarView.swift */; };
+		FAE532C92B58CB9000C84CFF /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE532C82B58CB9000C84CFF /* UIView+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		FAE532B42B58C0D000C84CFF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FAE532B72B58C0D000C84CFF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FAE532B92B58C0D000C84CFF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FAE532C42B58C71500C84CFF /* CircularProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressBarView.swift; sourceTree = "<group>"; };
+		FAE532C82B58CB9000C84CFF /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +60,65 @@
 		FAE532AA2B58C0CE00C84CFF /* TomatoTimer */ = {
 			isa = PBXGroup;
 			children = (
+				FAE532C02B58C4BB00C84CFF /* App */,
+				FAE532C22B58C4E900C84CFF /* Sources */,
+				FAE532C12B58C4D500C84CFF /* Resources */,
+			);
+			path = TomatoTimer;
+			sourceTree = "<group>";
+		};
+		FAE532C02B58C4BB00C84CFF /* App */ = {
+			isa = PBXGroup;
+			children = (
 				FAE532AB2B58C0CE00C84CFF /* AppDelegate.swift */,
 				FAE532AD2B58C0CE00C84CFF /* SceneDelegate.swift */,
-				FAE532AF2B58C0CE00C84CFF /* ViewController.swift */,
-				FAE532B12B58C0CE00C84CFF /* Main.storyboard */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		FAE532C12B58C4D500C84CFF /* Resources */ = {
+			isa = PBXGroup;
+			children = (
 				FAE532B42B58C0D000C84CFF /* Assets.xcassets */,
 				FAE532B62B58C0D000C84CFF /* LaunchScreen.storyboard */,
 				FAE532B92B58C0D000C84CFF /* Info.plist */,
 			);
-			path = TomatoTimer;
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		FAE532C22B58C4E900C84CFF /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				FAE532C72B58CB7E00C84CFF /* Extensions */,
+				FAE532C62B58CB6F00C84CFF /* Controllers */,
+				FAE532C32B58C6F800C84CFF /* Views */,
+				FAE532B12B58C0CE00C84CFF /* Main.storyboard */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		FAE532C32B58C6F800C84CFF /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				FAE532C42B58C71500C84CFF /* CircularProgressBarView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		FAE532C62B58CB6F00C84CFF /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				FAE532AF2B58C0CE00C84CFF /* ViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		FAE532C72B58CB7E00C84CFF /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				FAE532C82B58CB9000C84CFF /* UIView+Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -140,6 +194,8 @@
 			files = (
 				FAE532B02B58C0CE00C84CFF /* ViewController.swift in Sources */,
 				FAE532AC2B58C0CE00C84CFF /* AppDelegate.swift in Sources */,
+				FAE532C92B58CB9000C84CFF /* UIView+Extensions.swift in Sources */,
+				FAE532C52B58C71500C84CFF /* CircularProgressBarView.swift in Sources */,
 				FAE532AE2B58C0CE00C84CFF /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -294,10 +350,10 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4EE9JPLE3R;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = TomatoTimer/Info.plist;
+				INFOPLIST_FILE = TomatoTimer/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -322,10 +378,10 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4EE9JPLE3R;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = TomatoTimer/Info.plist;
+				INFOPLIST_FILE = TomatoTimer/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
