@@ -56,15 +56,39 @@
 		FAE532AA2B58C0CE00C84CFF /* TomatoTimer */ = {
 			isa = PBXGroup;
 			children = (
+				FAE532C02B58C4BB00C84CFF /* App */,
+				FAE532C22B58C4E900C84CFF /* Sources */,
+				FAE532C12B58C4D500C84CFF /* Resources */,
+			);
+			path = TomatoTimer;
+			sourceTree = "<group>";
+		};
+		FAE532C02B58C4BB00C84CFF /* App */ = {
+			isa = PBXGroup;
+			children = (
 				FAE532AB2B58C0CE00C84CFF /* AppDelegate.swift */,
 				FAE532AD2B58C0CE00C84CFF /* SceneDelegate.swift */,
-				FAE532AF2B58C0CE00C84CFF /* ViewController.swift */,
-				FAE532B12B58C0CE00C84CFF /* Main.storyboard */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		FAE532C12B58C4D500C84CFF /* Resources */ = {
+			isa = PBXGroup;
+			children = (
 				FAE532B42B58C0D000C84CFF /* Assets.xcassets */,
 				FAE532B62B58C0D000C84CFF /* LaunchScreen.storyboard */,
 				FAE532B92B58C0D000C84CFF /* Info.plist */,
 			);
-			path = TomatoTimer;
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		FAE532C22B58C4E900C84CFF /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				FAE532AF2B58C0CE00C84CFF /* ViewController.swift */,
+				FAE532B12B58C0CE00C84CFF /* Main.storyboard */,
+			);
+			path = Sources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -294,10 +318,10 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4EE9JPLE3R;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = TomatoTimer/Info.plist;
+				INFOPLIST_FILE = TomatoTimer/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -322,10 +346,10 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4EE9JPLE3R;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = TomatoTimer/Info.plist;
+				INFOPLIST_FILE = TomatoTimer/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
