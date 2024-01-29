@@ -45,6 +45,8 @@ class CircularProgressBarView: UIView {
     private var isWorkTime: Bool = false
     private var duration = 120
     private var elapsedTime = 0
+    private var workTime: Int = 10
+    private var relaxTime: Int = 5
     
     
     var progressColor = UIColor.red {
@@ -174,10 +176,10 @@ class CircularProgressBarView: UIView {
             setProgress(to: progress, withAnimation: false)
             setTimeLabel(value: duration - elapsedTime)
             
-            if elapsedTime % 25 == 0 {
+            if elapsedTime % workTime == 0 {
                 changeProgressLayerColor(to: .green)
                 chageButtonLabelColor(to: .green)
-            } else if elapsedTime % 10 == 0 {
+            } else if elapsedTime % relaxTime == 0 {
                 changeProgressLayerColor(to: .red)
                 chageButtonLabelColor(to: .red)
             }
