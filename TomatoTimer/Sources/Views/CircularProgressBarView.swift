@@ -42,7 +42,6 @@ class CircularProgressBarView: UIView {
     private var trackLayer = CAShapeLayer()
     private var timer: Timer?
     private var isStarted: Bool = false
-    private var isWorkTime: Bool = false
     private var duration = 120
     private var elapsedTime = 0
     private var workTime: Int = 10
@@ -115,7 +114,6 @@ class CircularProgressBarView: UIView {
         if !isStarted {
             timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
             isStarted = true
-            isWorkTime = true
             startStopButton.setImage(UIImage(systemName: "pause"), for: .normal)
         }
     }
