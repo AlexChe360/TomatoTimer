@@ -46,6 +46,7 @@ class CircularProgressBarView: UIView {
     private var elapsedTime = 0
     private var workTime: Int = 10
     private var relaxTime: Int = 5
+    private var isWorkTime: Bool = false
     
     
     var progressColor = UIColor.red {
@@ -114,6 +115,7 @@ class CircularProgressBarView: UIView {
         if !isStarted {
             timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
             isStarted = true
+            isWorkTime = true
             startStopButton.setImage(UIImage(systemName: "pause"), for: .normal)
         }
     }
@@ -121,6 +123,7 @@ class CircularProgressBarView: UIView {
     private func stopTimer() {
         timer?.invalidate()
         isStarted = false
+        isWorkTime = false
         startStopButton.setImage(UIImage(systemName: "play"), for: .normal)
     }
     
