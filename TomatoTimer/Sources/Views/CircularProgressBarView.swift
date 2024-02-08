@@ -17,11 +17,13 @@ class CircularProgressBarView: UIView {
         static let y: CGFloat = 115
     }
     
+    // MARK: - UI
+    
     private var timerLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-        label.text = "0"
-        label.textColor = UIColor.red
+        label.text = "00:00:000"
+        label.textColor = UIColor.green
         label.font = UIFont.systemFont(ofSize: Constants.labelSize, weight: .light)
         return label
     }()
@@ -29,7 +31,7 @@ class CircularProgressBarView: UIView {
     private var startStopButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(systemName: "play"), for: .normal)
-        button.tintColor = UIColor.red
+        button.tintColor = UIColor.green
         button.imageView?.contentMode = .scaleAspectFit
         button.contentVerticalAlignment = .fill
         button.contentHorizontalAlignment = .fill
@@ -38,28 +40,32 @@ class CircularProgressBarView: UIView {
         return button
     }()
     
+    // MARK: - Properties
+    
     private var progressLayer = CAShapeLayer()
     private var trackLayer = CAShapeLayer()
     private var timer: Timer?
     private var isStarted: Bool = false
-    private var duration = 120
-    private var elapsedTime = 0
-    private var workTime: Int = 10
-    private var relaxTime: Int = 5
+
     private var isWorkTime: Bool = false
+    private var workTime: Double = 10.0
+    private var relaxTime: Double = 5.0
+    private lazy var duration = workTime
+
     
-    
-    var progressColor = UIColor.red {
+    private var progressColor = UIColor.red {
         didSet {
             progressLayer.strokeColor = progressColor.cgColor
         }
     }
     
-    var trackColor = UIColor.lightGray {
+    private var trackColor = UIColor.lightGray {
         didSet {
             trackLayer.strokeColor = trackColor.cgColor
         }
     }
+    
+    // MARK: - Lifecycle
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -82,13 +88,18 @@ class CircularProgressBarView: UIView {
         startStopButton.frame = CGRect(x: bounds.size.width / 2 - 30 , y: bounds.size.height / 2 + 40, width: buttonSize, height: buttonSize)
     }
     
+    // MARK: - Setup
+    
     private func setupView() {
         addSubviews([
             timerLabel,
             startStopButton
         ])
+        setTimeLabel(value: duration)
         startStopButton.addTarget(self, action: #selector(startStopTapped), for: .touchUpInside)
     }
+    
+    // MARK: - Other functions
     
     private func createCircularPath() {
         self.backgroundColor = UIColor.clear
@@ -112,12 +123,9 @@ class CircularProgressBarView: UIView {
     }
     
     private func startTimer() {
-        if !isStarted {
-            timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
-            isStarted = true
-            isWorkTime = true
-            startStopButton.setImage(UIImage(systemName: "pause"), for: .normal)
-        }
+        timer = Timer.scheduledTimer(timeInterval: 0.001, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
+        isStarted = true
+        startStopButton.setImage(UIImage(systemName: "pause"), for: .normal)
     }
     
     private func stopTimer() {
@@ -136,31 +144,14 @@ class CircularProgressBarView: UIView {
         startStopButton.tintColor = newColor
     }
     
-    func setProgress(to progressConstant: CGFloat, withAnimation: Bool) {
-        var progress = progressConstant
-        if progressConstant > 1.0 {
-            progress = 1.0
-        } else if progressConstant < 0.0 {
-            progress = 0.0
-        }
-        if withAnimation {
-            let animation = CABasicAnimation(keyPath: "strokeEnd")
-            animation.duration = 2
-            animation.fromValue = progressLayer.strokeEnd
-            animation.toValue = progress
-            animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
-            progressLayer.strokeEnd = progress
-            progressLayer.add(animation, forKey: "animateProgress")
-        } else {
-            progressLayer.strokeEnd = progress
-        }
+    private func setTimeLabel(value: Double) {
+        let minutes = Int(value / 60)
+        let seconds = Int(value - Double(minutes) * 60 * 100)
+        let milisec = Int((value - Double(Int(value))) * 1000)
+        timerLabel.text = String(format: "%02d:%02d:%03d", minutes, seconds, milisec)
     }
     
-    func setTimeLabel(value: Int) {
-        let minutes = value / 60
-        let seconds = value % 60
-        timerLabel.text = String(format: "%02d:%02d", minutes, seconds)
-    }
+    // MARK: - Actions
     
     @objc func startStopTapped() {
         if isStarted {
@@ -171,26 +162,20 @@ class CircularProgressBarView: UIView {
     }
     
     @objc func updateTimer() {
-        if elapsedTime < duration {
-            elapsedTime += 1
-            let progress = CGFloat(elapsedTime) / CGFloat(duration)
-            setProgress(to: progress, withAnimation: false)
-            setTimeLabel(value: duration - elapsedTime)
-            
-            if elapsedTime % workTime == 0 {
+        duration -= 0.001
+        setTimeLabel(value: duration)
+        if duration <= 0 {
+            if isWorkTime {
                 changeProgressLayerColor(to: .green)
                 chageButtonLabelColor(to: .green)
-            } else if elapsedTime % relaxTime == 0 {
+            } else {
+
                 changeProgressLayerColor(to: .red)
                 chageButtonLabelColor(to: .red)
             }
-            
-        } else {
-            elapsedTime = 0
-            setProgress(to: 0, withAnimation: false)
+            isWorkTime.toggle()
+            duration = isWorkTime ? relaxTime : workTime
             setTimeLabel(value: duration)
-            startTimer()
         }
     }
-    
 }
