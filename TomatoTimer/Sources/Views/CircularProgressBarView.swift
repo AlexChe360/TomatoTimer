@@ -46,10 +46,12 @@ class CircularProgressBarView: UIView {
     private var trackLayer = CAShapeLayer()
     private var timer: Timer?
     private var isStarted: Bool = false
+
     private var isWorkTime: Bool = false
     private var workTime: Double = 10.0
     private var relaxTime: Double = 5.0
     private lazy var duration = workTime
+
     
     private var progressColor = UIColor.red {
         didSet {
@@ -129,6 +131,7 @@ class CircularProgressBarView: UIView {
     private func stopTimer() {
         timer?.invalidate()
         isStarted = false
+        isWorkTime = false
         startStopButton.setImage(UIImage(systemName: "play"), for: .normal)
     }
     
@@ -166,6 +169,7 @@ class CircularProgressBarView: UIView {
                 changeProgressLayerColor(to: .green)
                 chageButtonLabelColor(to: .green)
             } else {
+
                 changeProgressLayerColor(to: .red)
                 chageButtonLabelColor(to: .red)
             }
